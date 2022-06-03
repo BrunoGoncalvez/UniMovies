@@ -1,0 +1,10 @@
+C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Domain\bin\Debug\netcoreapp3.1\Uni.Movies.Domain.deps.json
+C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Domain\bin\Debug\netcoreapp3.1\Uni.Movies.Domain.dll
+C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Domain\bin\Debug\netcoreapp3.1\Uni.Movies.Domain.pdb
+C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Domain\obj\Debug\netcoreapp3.1\Uni.Movies.Domain.csproj.AssemblyReference.cache
+C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Domain\obj\Debug\netcoreapp3.1\Uni.Movies.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Domain\obj\Debug\netcoreapp3.1\Uni.Movies.Domain.AssemblyInfoInputs.cache
+C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Domain\obj\Debug\netcoreapp3.1\Uni.Movies.Domain.AssemblyInfo.cs
+C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Domain\obj\Debug\netcoreapp3.1\Uni.Movies.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Domain\obj\Debug\netcoreapp3.1\Uni.Movies.Domain.dll
+C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Domain\obj\Debug\netcoreapp3.1\Uni.Movies.Domain.pdb
