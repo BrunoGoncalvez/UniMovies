@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using Uni.Movies.Application.Models.ViewModels;
-using Uni.Movies.Data.Context;
-using Uni.Movies.Data.Repository;
 using Uni.Movies.Domain.Entities;
 using Uni.Movies.Domain.Interfaces;
 
@@ -26,13 +20,11 @@ namespace Uni.Movies.Application.Controllers
             _genreRepository = genreRepository;
         }
 
-        // GET: Movies
         public async Task<IActionResult> Index()
         {
-            return View(await _moviesRepository.FindAll());
+            return View(await _moviesRepository.GetMoviesWithGenre());
         }
 
-        // GET: Movies/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -40,7 +32,7 @@ namespace Uni.Movies.Application.Controllers
                 return NotFound();
             }
 
-            var movie = await _moviesRepository.FindById(id.Value);
+            var movie = await _moviesRepository.GetMovieWithGenre(id.Value);
             if (movie == null)
             {
                 return NotFound();
@@ -104,7 +96,7 @@ namespace Uni.Movies.Application.Controllers
             return View(movieViewModel);
         }
 
-        [HttpPost("{id}")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, MovieViewModel movieViewModel)
         {
@@ -112,10 +104,16 @@ namespace Uni.Movies.Application.Controllers
             if (id != movieViewModel.Id) return NotFound();
             var movie = await _moviesRepository.FindById(id);
 
+            movieViewModel.Image = movie.Image;
+
             if(movieViewModel.ImageUpload != null)
             {
-                var imgName = Guid.NewGuid() + "_" + movieViewModel.Image;
-                movie.Image = imgName;
+                var imgPrefix = Guid.NewGuid() + "_" + movieViewModel.Image;
+                if (!await UploadFile(movieViewModel.ImageUpload, imgPrefix))
+                {
+                    return View(movieViewModel);
+                }
+                movie.Image = imgPrefix + movieViewModel.ImageUpload.FileName;
             }
 
             movie.Name = movieViewModel.Name;
@@ -131,35 +129,28 @@ namespace Uni.Movies.Application.Controllers
 
         public async Task<IActionResult> Delete(int? id)
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
 
-            //var movie = await _context.Movies
-            //    .Include(m => m.Genre)
-            //    .FirstOrDefaultAsync(m => m.Id == id);
-            //if (movie == null)
-            //{
-            //    return NotFound();
-            //}
-
-            return View();
+            if (id == null) return NotFound();
+            var movie = await _moviesRepository.GetMovieWithGenre(id.Value);
+            if (movie == null) return NotFound();
+            
+            return View(movie);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            //var movie = await _context.Movies.FindAsync(id);
-            //_context.Movies.Remove(movie);
-            //await _context.SaveChangesAsync();
+            var movie = await _moviesRepository.FindById(id);
+            if (movie == null) return NotFound();
+            await _moviesRepository.Delete(id);
             return RedirectToAction(nameof(Index));
         }
 
 
 
 
+        // UTILS
         private async Task<MovieViewModel> PopulateGenres(MovieViewModel movie)
         {
             movie.Genres = await _genreRepository.FindAll();

@@ -8,7 +8,8 @@ namespace Uni.Movies.Domain.Interfaces
     public interface IMovieRepository : IRepository<Movie>
     {
 
-        Task<IEnumerable<Movie>> FindByName(string name);
+        Task<Movie> GetMovieWithGenre(int id);
+        Task<IEnumerable<Movie>> GetMoviesWithGenre();
 
     }
 }

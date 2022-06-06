@@ -157,6 +157,6 @@ C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Application\obj\Debug\netc
 C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Application\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Index.cshtml.g.cs
 C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Application\obj\Debug\netcoreapp3.1\Razor\Views\Genres\Create.cshtml.g.cs
 C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Application\obj\Debug\netcoreapp3.1\Razor\Views\Genres\Delete.cshtml.g.cs
-C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Application\obj\Debug\netcoreapp3.1\Razor\Views\Genres\Details.cshtml.g.cs
 C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Application\obj\Debug\netcoreapp3.1\Razor\Views\Genres\Edit.cshtml.g.cs
 C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Application\obj\Debug\netcoreapp3.1\Razor\Views\Genres\Index.cshtml.g.cs
+C:\Users\Bruno\source\repos\Uni.Movies\src\Uni.Movies.Application\bin\Debug\netcoreapp3.1\libman.json

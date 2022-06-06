@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Uni.Movies.Data.Context;
@@ -15,9 +17,16 @@ namespace Uni.Movies.Data.Repository
         {
         }
 
-        public Task<IEnumerable<Movie>> FindByName(string name)
+        public async Task<Movie> GetMovieWithGenre(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Movies.AsNoTracking().Include(m => m.Genre).FirstOrDefaultAsync(m => m.Id == id) ;
         }
+
+        public async Task<IEnumerable<Movie>> GetMoviesWithGenre()
+        {
+            return await _context.Movies.AsNoTracking().Include(m => m.Genre).OrderBy(m => m.Name).ToListAsync();
+        }
+
+
     }
 }

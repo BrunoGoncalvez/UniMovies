@@ -44,7 +44,6 @@
                 <label asp-for="GenreId" class="control-label"></label>
                 <select asp-for="GenreId" class="form-control"
                         asp-items="@(new SelectList(Model.Genres, "Id", "Name"))">
-                    <option></option>
                 </select>
                 <span asp-validation-for="GenreId" class="text-danger"></span>
             </div>
@@ -62,4 +61,11 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    $("#ImageUpload").change(function () {
+        $("#img_name").text(this.files[0].name);
+        $("#img_name")[0].style.display = 'block';
+    });
+</script>
 }

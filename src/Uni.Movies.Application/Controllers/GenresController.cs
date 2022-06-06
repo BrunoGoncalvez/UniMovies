@@ -21,30 +21,11 @@ namespace Uni.Movies.Application.Controllers
             _genreRepository = genreRepository;
         }
 
-        // GET: Genres
         public async Task<IActionResult> Index()
         {
             return View(await _genreRepository.FindAll());
         }
 
-        // GET: Genres/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var genre = await _genreRepository.FindById(id.Value);
-            if (genre == null)
-            {
-                return NotFound();
-            }
-
-            return View(genre);
-        }
-
-        // GET: Genres/Create
         public IActionResult Create()
         {
             return View();
@@ -62,75 +43,36 @@ namespace Uni.Movies.Application.Controllers
             return View(genre);
         }
 
-        // GET: Genres/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var genre = await _genreRepository.FindById(id.Value);
-            if (genre == null)
-            {
-                return NotFound();
-            }
+            if (genre == null) return NotFound(); 
             return View(genre);
         }
 
-        // POST: Genres/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Genre genre)
         {
-            if (id != genre.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    await _genreRepository.Update(genre);
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    return NotFound();
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(genre);
+            if (id != genre.Id) return NotFound(); 
+            await _genreRepository.Update(genre);
+            return RedirectToAction(nameof(Index));
         }
 
-        // GET: Genres/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
+            if (id == null) return NotFound(); 
             var genre = await _genreRepository.FindById(id.Value);
-
-            if (genre == null)
-            {
-                return NotFound();
-            }
-
+            if (genre == null) return NotFound(); 
             return View(genre);
         }
 
-        // POST: Genres/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            //var genre = await _context.Genres.FindAsync(id);
-            //_context.Genres.Remove(genre);
-            //await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
     }

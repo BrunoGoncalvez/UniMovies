@@ -12,7 +12,7 @@ namespace Uni.Movies.Data.Repository
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
-        private readonly UniDbContext _context;
+        protected readonly UniDbContext _context;
         protected readonly DbSet<TEntity> DbSet;
 
         public Repository(UniDbContext context)
