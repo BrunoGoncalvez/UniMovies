@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Uni.Movies.Domain.Entities.Movie>
+
+@{
+    ViewData["Title"] = "HomeMovies";
+}
+<div class="container">
+    <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" name="searchMovie" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+
+    <div class="cards">
+        @foreach (var item in Model)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <img src="~/images/@item.Image" class="card-img" alt="">
+                </div>
+
+                <div class="card-body">
+                    <div class="card-info">
+                        <h2 class="card-title">@item.Name</h2>
+                        <h3 class="card-year">@item.Year</h3>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <a asp-action="Details" asp-route-id="@item.Id">Ver Mais</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

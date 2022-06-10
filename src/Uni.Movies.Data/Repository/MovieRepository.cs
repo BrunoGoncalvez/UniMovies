@@ -27,6 +27,11 @@ namespace Uni.Movies.Data.Repository
             return await _context.Movies.AsNoTracking().Include(m => m.Genre).OrderBy(m => m.Name).ToListAsync();
         }
 
-
+        public async Task<IEnumerable<Movie>> SearchMovie(string searchMovie)
+        {
+            if (string.IsNullOrEmpty(searchMovie))
+                return await _context.Movies.ToListAsync();
+            return _context.Movies.Where(m => m.Name.Contains(searchMovie));
+        }
     }
 }

@@ -69,3 +69,91 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
+
+/* -----> Start Cards <-------- */
+
+.cards {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 230px;
+    height: 350px;
+    margin: 25px;
+    background-color: aliceblue;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+}
+
+.card-header {
+    width: 100%;
+    padding: 0px;
+    height: 220px;
+    overflow: hidden;
+}
+
+.card-img {
+    min-width: 100%;
+    width: auto;
+    height: 100%;
+}
+
+.card-body {
+    height: 70px;
+    padding: 8px;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.card-title {
+    font-size: 18px;
+    margin: 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-info {
+    width: 217px;
+}
+
+.card-year {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.card-resume {
+    font-size: 12px;
+    width: 250px;
+    margin: 0 auto;
+}
+
+.card-footer {
+    margin-top: 10px;
+    padding: 0;
+    text-align: center;
+    background-color: rgb(46, 30, 192);
+}
+
+    .card-footer a {
+        color: #fff;
+        display: block;
+        padding: 8px;
+        text-decoration: none;
+        font-family: sans-serif;
+        font-weight: 600;
+    }
+
+.card:hover {
+    transform: scale3d(1.1, 1.1, 1);
+}
+
+/* -----> End Cards <-------- */
+
+

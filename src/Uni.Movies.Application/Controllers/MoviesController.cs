@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Uni.Movies.Application.Models.ViewModels;
 using Uni.Movies.Domain.Entities;
 using Uni.Movies.Domain.Interfaces;
+using System.Linq;
 
 namespace Uni.Movies.Application.Controllers
 {
@@ -23,6 +25,13 @@ namespace Uni.Movies.Application.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _moviesRepository.GetMoviesWithGenre());
+        }
+
+        public async Task<IActionResult> HomeMovies(string searchMovie)
+        {
+            if(string.IsNullOrEmpty(searchMovie))
+                return View(await _moviesRepository.GetMoviesWithGenre());
+            return View(await _moviesRepository.SearchMovie(searchMovie));
         }
 
         public async Task<IActionResult> Details(int? id)

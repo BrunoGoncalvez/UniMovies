@@ -64,7 +64,7 @@ namespace Uni.Movies.Application
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Movies}/{action=HomeMovies}/{id?}");
             });
         }
     }

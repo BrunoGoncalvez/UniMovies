@@ -10,6 +10,7 @@ namespace Uni.Movies.Domain.Interfaces
 
         Task<Movie> GetMovieWithGenre(int id);
         Task<IEnumerable<Movie>> GetMoviesWithGenre();
+        Task<IEnumerable<Movie>> SearchMovie(string searchMovie);
 
     }
 }
